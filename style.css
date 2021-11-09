@@ -1,3 +1,88 @@
-*, ::before, ::after {
+/* GENARAL */
+@import url("https://fonts.google.com/specimen/Lato");
+
+*,
+::before,
+::after {
    box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+Body {
+   font-family: lato;
+   font-style: italic;
+   font-weight: bolder;
+   background-color: rgb(253, 255, 240);
+}
+
+/* NAVBAR */
+nav {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   text-align: center;
+   height: 75px;
+   font-size: 1.2rem;
+   background-color: rgb(34, 139, 34);
+   color: rgb(232, 236, 214);
+   box-shadow: 0 5px 5px grey;
+}
+
+/* HEADER */
+header {
+   position: relative;
+   top: 75px;
+   height: 150px;
+}
+
+header section {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+
+h1 {
+   font-size: 3rem;
+   color: rgb(162, 49, 49);
+}
+
+/* MAIN */
+main {
+   position: relative;
+   top: 75px;
+}
+
+h2,
+h3 {
+   font-size: 2rem;
+   color: rgb(253, 255, 240);
+}
+
+.card {
+   text-align: center;
+   background-color: rgb(253, 255, 240);
+   box-shadow: 0 0px 5px grey;
+}
+
+.card-header {
+   background-color: rgb(34, 139, 34);
+}
+
+/* FOOTER */
+footer {
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   text-align: center;
+   height: 75px;
+   background-color: rgb(34, 139, 34);
+   color: rgb(232, 236, 214);
 }
