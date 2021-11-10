@@ -22,33 +22,51 @@
    </nav>
    <header class="row">
       <section class="col-12">
-         <h1>The Hundred Dice</h1>
+         <h1><strong>The Hundred Dice</strong></h1>
       </section>
    </header>
-   <main class="row row-cols-1 row-cols-lg-3 g-4">
+   <main class="row row-cols-1 row-cols-lg-3 g-3">
       <!-- PLAYER 1 -->
-      <div class="col">
-         <div class="card h-100">
+      <div class="col-12 col-lg-3">
+         <div class="card h-100" id="player1">
             <h2 class="card-header">Joueur 1</h2>
-            <div class="card-body">
-               
+            <div class="card-body row">
+               <div class="col">
+                  <p class="card-text">TOTAL</p>
+                  <p id="totalScore1" class="card-text">0</p>
+                  <div class="col">
+                     <p class="card-text">EN POCHE</p>
+                     <p id="currentScore1" class="card-text">0</p>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
       <!-- ROLL DICE -->
-      <div class="col">
+      <div class="col-12 col-lg-5">
          <div class="card h-100">
             <div class="card-body">
 
             </div>
+            <div class="card-footer d-flex justify-content-around">
+               <button class="btn btn-success">Verrouiller</button>
+               <button class="btn btn-success">Lancer</button>
+            </div>
          </div>
       </div>
       <!-- PLAYER 2 -->
-      <div class="col">
-         <div class="card h-100">
+      <div class="col-12 col-lg-3">
+         <div class="card h-100" id="player2">
             <h3 class="card-header">Joueur 2</h3>
-            <div class="card-body">
-              
+            <div class="card-body row">
+               <div class="col">
+                  <p class="card-text">TOTAL</p>
+                  <p id="totalScore2" class="card-text">0</p>
+                  <div class="col">
+                     <p class="card-text">EN POCHE</p>
+                     <p id="currentScore2" class="card-text">0</p>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
@@ -56,7 +74,7 @@
    <!-- FOOTER -->
    <footer class="row">
       <div class="col-12">
-         Pierric Marye
+         <i class="far fa-copyright"> 2021 Pierric Marye</i>
       </div>
    </footer>
 
