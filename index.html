@@ -15,7 +15,7 @@
    <!-- HEADER -->
    <header class="row">
       <section class="col-12">
-         <h1><strong>The Hundred Dice</strong></h1>
+         <h1 class="text-danger"><strong>The Hundred Dice</strong></h1>
       </section>
    </header>
    <!-- NAVBAR -->
@@ -29,7 +29,7 @@
             <div class="modal-dialog">
                <div class="modal-content">
                   <div class="modal-header">
-                     <h2 class="modal-title" id="exampleModalLabel1">Règles du jeux</h2>
+                     <h2 class="modal-title text-success" id="exampleModalLabel1">Règles du jeux</h2>
                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -64,19 +64,19 @@
             <div class="modal-dialog">
                <div class="modal-content">
                   <div class="modal-header">
-                     <h3 class="modal-title" id="exampleModalLabel2">Lancer la partie</h3>
+                     <h3 class="modal-title text-success" id="exampleModalLabel2">Lancer la partie</h3>
                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                      <div class="row">
                         <div class="col">
                            <div class="mb-3">
-                              <label for="player1" class="form-label text-success">Joueur 1</label>
+                              <label for="player1" class="form-label text-danger">Joueur 1</label>
                               <input type="text" class="form-control" id="player1" placeholder="Entrez votre nom">
                            </div>
                         </div>
                         <div class="col">
-                           <label for="player2" class="form-label text-success">Joueur 2</label>
+                           <label for="player2" class="form-label text-danger">Joueur 2</label>
                            <input type="text" class="form-control" id="player2" placeholder="Entrez votre nom">
                         </div>
                      </div>
@@ -89,24 +89,24 @@
    <!-- MAIN -->
    <main class="row row-cols-1 row-cols-lg-3 g-3">
       <!-- PLAYER 1 -->
-      <div class="col-12 col-lg-4">
-         <div class="cardPlayer1 card h-100">
-            <h2 class="card-header">Joueur 1</h2>
+      <div class="col-12 col-lg-3">
+         <div class="cardPlayer1 card">
+            <h2 class="card-header bg-success">Joueur 1</h2>
             <div class="card-body row">
                <div class="col-4">
-                  <p class="card-text">TOTAL</p>
+                  <p class="card-text bg-danger">TOTAL</p>
                   <p id="totalScore1" class="card-text">0</p>
                </div>
                <div class="col-4">
-                  <p class="card-text">EN POCHE</p>
+                  <p class="card-text bg-danger">EN POCHE</p>
                   <p id="currentScore1" class="card-text">0</p>
                </div>
             </div>
          </div>
       </div>
       <!-- ROLL DICE -->
-      <div class="col-12 col-lg-4">
-         <div class="diceBoard card h-100">
+      <div class="col-12 col-lg-6">
+         <div class="diceBoard card">
             <div class="card-body">
             <div>
                <button id="hold" class="btn btn-danger">Verrouiller</button>
@@ -116,16 +116,16 @@
       </div>
       </div>
       <!-- PLAYER 2 -->
-      <div class="col-12 col-lg-4">
-         <div class="cardPlayer2 card h-100">
-            <h3 class="card-header">Joueur 2</h3>
+      <div class="col-12 col-lg-3">
+         <div class="cardPlayer2 card">
+            <h3 class="card-header bg-success">Joueur 2</h3>
             <div class="card-body row">
                <div class="col-4">
-                  <p class="card-text">TOTAL</p>
+                  <p class="card-text bg-danger">TOTAL</p>
                   <p id="totalScore2" class="card-text">0</p>
                </div>
                <div class="col-4">
-                  <p class="card-text">EN POCHE</p>
+                  <p class="card-text bg-danger">EN POCHE</p>
                   <p id="currentScore2" class="card-text">0</p>
                </div>
             </div>
@@ -134,8 +134,8 @@
    </main>
    <!-- FOOTER -->
    <footer class="row">
-      <div class="col-12">
-         <i class="far fa-copyright"> 2021 Pierric Marye</i>
+      <div class="col-12 text-success">
+         <i class="far fa-copyright"> 2021 - Pierric Marye</i>
       </div>
    </footer>
 
