@@ -72,15 +72,16 @@ h3 {
 }
 
 .cardPlayer1,
-.diceBoard,
 .cardPlayer2 {
    text-align: center;
    background-color: rgb(253, 255, 240);
-   box-shadow: 0 0px 10px rgb(128, 128, 128);
+   box-shadow: 0 0px 5px rgb(128, 128, 128);
+   opacity: 1;
 }
 
 .diceBoard {
    box-shadow: none;
+   background-color: rgb(253, 255, 240);
 }
 
 .card-header {
@@ -112,6 +113,7 @@ main .card-body p:nth-child(3) {
 }
 
 #dice {
+   display: block;
    width: 75px;
    height: auto;
 }
@@ -126,6 +128,23 @@ main .card-body p:nth-child(3) {
 }
 
 /* DICE */
+.animatedDice {
+   animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+   0% {
+      transform: rotateX(45deg);
+   }
+
+   50% {
+      transform: rotateY(90deg);
+   }
+
+   100% {
+      transform: rotateX(180deg);
+   }
+}
 
 /* FOOTER */
 footer {
@@ -140,6 +159,7 @@ footer {
 
 /* AT LG BREACKPOINT */
 @media screen and (min-width: 992px) {
+
    /* HEADER */
    header {
       background-image: url("assests/images/headerdice.jpg");
