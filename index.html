@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
    <meta charset="UTF-8">
@@ -66,20 +66,20 @@
                <div class="modal-content">
                   <div class="modal-header">
                      <h5 class="modal-title text-success" id="exampleModalLabel2">Lancer la partie</h5>
-                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                      <div class="row g-3">
                         <div class="col-6">
-                              <label for="player1" class="form-label text-danger">Joueur 1</label>
-                              <input type="text" class="form-control" id="inputName1" placeholder="Entrez votre nom">
+                           <label for="player1" class="form-label text-danger">Joueur 1</label>
+                           <input type="text" class="form-control" id="inputName1" placeholder="Entrez votre nom">
                         </div>
                         <div class="col-6">
                            <label for="player2" class="form-label text-danger">Joueur 2</label>
                            <input type="text" class="form-control" id="inputName2" placeholder="Entrez votre nom">
                         </div>
                         <div class="col-12">
-                           <button id="go" class="btn btn-warning">Go !</button>
+                           <button type="button" id="go" class="btn btn-warning" data-bs-dismiss="modal"
+                              aria-label="Close">Go !</button>
                         </div>
                      </div>
                   </div>
@@ -111,7 +111,7 @@
          <div class="diceBoard card h-100">
             <div class="card-body">
                <div>
-                  <img src="/assests/images/diceFace1.png" id="dice" class="img-fluid">
+                  <img src="/assests/images/diceFace2.png" id="dice" class="img-fluid" alt="face of dice">
                </div>
                <div>
                   <button id="holdBtn" class="btn btn-danger">Verrouiller</button>
@@ -123,7 +123,7 @@
       <!-- PLAYER 2 -->
       <div class="col-12 col-lg-4">
          <div class="cardPlayer2 card h-100">
-            <h3 class="card-header bg-success">Joueur 2</h3>
+            <h3 id="player2" class="card-header bg-success">Joueur 2</h3>
             <div class="card-body row">
                <div class="col-4">
                   <p class="card-text bg-danger">TOTAL</p>
