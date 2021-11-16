@@ -1,65 +1,125 @@
-// Get DOM ELEMENTS
-let go = document.getElementById("go");
+//
+let newGame = document.getElementById("newGame")
 let inputName1 = document.getElementById("inputName1");
 let inputName2 = document.getElementById("inputName2");
-
+let goBtn = document.getElementById("go");
 let cardPlayer1 = document.querySelector(".cardPlayer1");
 let cardPlayer2 = document.querySelector(".cardPlayer2");
-
-let playerName1 = document.getElementById("player1");
-let playerName2 = document.getElementById("player2");
-
-let total1 = document.getElementById("totalScore1");
-let round1 = document.getElementById("currentScore1");
-
-let total2 = document.getElementById("totalScore2");
-let round2 = document.getElementById("currentScore2");
-
-let dice = document.querySelector("img");
-
-let hold = document.getElementById("holdBtn");
-let rollBtn = document.getElementById("throwBtn");
-
+let imgDice = document.querySelector("#dice");
+let holdBtn = document.getElementById("holdBtn");
+let throwBtn = document.getElementById("throwBtn");
+// 
+let points;
+let roundPoint;
+let actualPlayer;
+let gamePlaying;
 let pseudo1 = "";
 let pseudo2 = "";
-let game;
-let currentPlayer;
-let round;
-let points;
 
 // collect value tipping in inputs and insert into h2, h3 title
 inputName1.addEventListener("input", (e) => {
-   pseudo1 = e.target.value;
- });
+  pseudo1 = e.target.value;
+});
 
- inputName2.addEventListener("input", (e) => {
-   pseudo2 = e.target.value;
- });
+inputName2.addEventListener("input", (e) => {
+  pseudo2 = e.target.value;
+});
 
-// Random display dice faces with animation
-function roll() {
-  let randomDice = Math.floor(Math.random() * 6) + 1;
-  dice.src = "/assests/images/diceFace" + randomDice + ".png";
-  dice.classList.add("animatedDice");
-  setTimeout(() => {
-    dice.classList.remove("animatedDice");
-  }, 600);
+function resetParty() {
+  points = [0, 0];
+  roundPoint = 0;
+  actualPlayer = 0;
+  gamePlaying = true;
+  pseudo1 = "";
+  pseudo2 = "";
+
+  cardPlayer1.classList.add("visible");
+  cardPlayer2.classList.remove("visible");
+  document.getElementById("total-0").textContent = "0";
+  document.getElementById("current-0").textContent = "0";
+  document.getElementById("total-1").textContent = "0";
+  document.getElementById("current-1").textContent = "0";
+
+  document.getElementById("player-0").textContent = "Joueur 1";
+  document.getElementById("player-1").textContent = "Joueur 2";
+  imgDice.style.display = "none";
 }
 
-// initialize game
-function initialize() {
-  let game = true;
-  let currentPlayer = 0;
-  let round = 0;
-  let points = [0, 0];
-
-  playerName1.textContent = pseudo1
-  playerName2.textContent = pseudo2
-  cardPlayer1.style.boxShadow = "0 0px 30px rgb(128, 128, 128)";
-  cardPlayer2.style.opacity = 0.1;
-
-  total1.textContent = "0";
-  round1.textContent = "0";
-  total2.textContent = "0";
-  round2.textContent = "0";
+// Next player function
+function next() {
+  roundPoint = 0;
+  //
+  if (actualPlayer === 0) {
+    actualPlayer = 1;
+  } else {
+    actualPlayer = 0;
+  }
+  //
+  document.querySelector("#current-0").textContent = 0;
+  document.querySelector("#current-1").textContent = 0;
+  cardPlayer1.classList.toggle("visible");
+  document.querySelector(".cardPlayer2").classList.toggle("visible");
+  imgDice.style.display = "none";
 }
+
+// Button new party => reset Party
+newGame.addEventListener("click", resetParty);
+
+// Button Go => Add names into cards names
+goBtn.addEventListener("click", () => {
+  document.getElementById("player-0").textContent = pseudo1;
+  document.getElementById("player-1").textContent = pseudo2;
+});
+
+// Throw button
+throwBtn.addEventListener("click", () => {
+  if (gamePlaying) {
+    imgDice.style.display = "initial";
+    let randomFace = Math.floor(Math.random() * 6) + 1;
+    imgDice.classList.add("animatedDice");
+
+    imgDice.src = `/assests/images/diceFace${randomFace}.png`;
+    setTimeout(() => {
+      dice.classList.remove("animatedDice");
+    }, 500);
+
+    if (randomFace !== 1) {
+      roundPoint += randomFace;
+      //
+      document.getElementById("current-" + actualPlayer).textContent =
+      roundPoint;
+    } else {
+      setTimeout(() => {
+        next();
+      }, 1000);
+    }
+  }
+});
+
+// Hold button
+holdBtn.addEventListener("click", () => {
+  if (gamePlaying) {
+    //
+    imgDice.style.display = "none";
+    //
+    points[actualPlayer] += roundPoint;
+    //
+    document.querySelector("#total-" + actualPlayer).textContent =
+    points[actualPlayer];
+    if (points[actualPlayer] >= 100) {
+      //
+      document.getElementById("player-" + actualPlayer).textContent =
+        "Bien joué !";
+      //
+      imgDice.style.display = "none";
+      document.getElementById("holdBtn").style.display = "none";
+      document.getElementById("throwBtn").style.display = "none";
+      // Play fireworks.js
+
+      //
+      gamePlaying = false;
+    } else {
+      next();
+    }
+  }
+});
