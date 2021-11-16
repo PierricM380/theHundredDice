@@ -25,7 +25,6 @@ header {
 h1 {
    font-size: 2rem;
    text-shadow: 3px 3px rgb(128, 128, 128);
-   margin-top: 20px;
 }
 
 /* NAVBAR */
@@ -65,8 +64,8 @@ main {
    justify-content: center;
 }
 
-h2,
-h3 {
+#player-0,
+#player-1 {
    font-size: 1.5rem;
    font-style: italic;
 }
@@ -75,7 +74,12 @@ h3 {
 .cardPlayer2 {
    text-align: center;
    background-color: rgb(253, 255, 240);
-   box-shadow: 0 0px 5px rgb(128, 128, 128);
+   opacity: 0.1;
+}
+
+.visible {
+   box-shadow: 0 0px 20px rgb(128, 128, 128);
+   transition: 0.5s ease;
    opacity: 1;
 }
 
@@ -88,9 +92,8 @@ h3 {
    color: rgb(253, 255, 240);
 }
 
-.card-body {
+.diceBoard .card-body {
    display: flex;
-   flex-direction: column;
    justify-content: center;
    align-items: center;
    text-align: center;
@@ -101,19 +104,18 @@ main .card-body p:nth-child(3) {
    font-size: 0.9rem;
    color: rgb(253, 255, 240);
    margin: 10px;
-   border-radius: 5px;
+   padding: 10px;
 }
 
-#totalScore1,
-#totalScore2,
-#currentScore1,
-#currentScore2 {
+#stotal-0,
+#current-0,
+#total-1,
+#current-1 {
    font-size: 1rem;
    font-weight: bold;
 }
 
 #dice {
-   display: block;
    width: 75px;
    height: auto;
 }
@@ -121,10 +123,7 @@ main .card-body p:nth-child(3) {
 #holdBtn,
 #throwBtn {
    width: 125px;
-   height: auto;
-   font-size: 0.8rem;
    box-shadow: 0 0 10px rgb(128, 128, 128);
-   margin: 10px;
 }
 
 /* DICE */
@@ -188,13 +187,9 @@ footer {
 
    }
 
-   input {
-      box-shadow: 0 2px 3px rgb(128, 128, 128);
-   }
-
    /* MAIN */
-   h2,
-   h3 {
+   #player-0,
+   #player-1 {
       font-size: 2rem;
    }
 
@@ -203,26 +198,19 @@ footer {
       margin: 15px;
    }
 
-   #totalScore1,
-   #totalScore2,
-   #currentScore1,
-   #currentScore2 {
+   #total-0,
+   #current-0,
+   #total-1,
+   #current-1 {
       font-size: 1.5rem;
       font-weight: bold;
    }
 
+   /* DICE */
    #dice {
       width: 125px;
       height: auto;
    }
-
-   #holdBtn,
-   #throwBtn {
-      width: 125px;
-      margin: 20px;
-   }
-
-   /* DICE */
 
    /* FOOTER */
    footer {
