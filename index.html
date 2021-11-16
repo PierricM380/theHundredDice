@@ -58,7 +58,7 @@
       </div>
       <!-- LAUNCH PARTY MODAL -->
       <div class="col col-lg-3">
-         <button type="button" class="newGame btn btn-dark" data-bs-toggle="modal" data-bs-target="#party">
+         <button id="newGame" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#party">
             Nouvelle partie
          </button>
          <div class="modal fade" id="party" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -78,7 +78,7 @@
                            <input type="text" class="form-control" id="inputName2" placeholder="Entrez votre nom">
                         </div>
                         <div class="col-12">
-                           <button type="button" id="go" class="btn btn-warning" data-bs-dismiss="modal"
+                           <button id="go" type="button" class="btn btn-warning" data-bs-dismiss="modal"
                               aria-label="Close">Go !</button>
                         </div>
                      </div>
@@ -93,15 +93,15 @@
       <!-- PLAYER 1 -->
       <div class="col-12 col-lg-4">
          <div class="cardPlayer1 card h-100">
-            <h2 id="player1" class="card-header bg-success">Joueur 1</h2>
-            <div class="card-body row">
-               <div class="col-4">
+            <h2 id="player-0" class="card-header bg-success">Joueur 1</h2>
+            <div class="card-body row row-cols-2 row-cols-lg-1">
+               <div class="col col-lg-12">
                   <p class="card-text bg-danger">TOTAL</p>
-                  <p id="totalScore1" class="card-text">0</p>
+                  <p id="total-0" class="card-text">0</p>
                </div>
-               <div class="col-4">
+               <div class="col col-lg-12">
                   <p class="card-text bg-danger">EN POCHE</p>
-                  <p id="currentScore1" class="card-text">0</p>
+                  <p id="current-0" class="card-text">0</p>
                </div>
             </div>
          </div>
@@ -109,29 +109,32 @@
       <!-- ROLL DICE -->
       <div class="col-12 col-lg-4">
          <div class="diceBoard card h-100">
-            <div class="card-body">
-               <div>
-                  <img src="/assests/images/diceFace2.png" id="dice" class="img-fluid" alt="face of dice">
+            <div class="card-body row g-3 mx-3">
+               <div class="col-12">
+                  <img src="/assests/images/diceFace2.png" id="dice" alt="face of dice">
                </div>
-               <div>
-                  <button id="holdBtn" class="btn btn-danger">Verrouiller</button>
-                  <button id="throwBtn" class="btn btn-danger">Lancer</button>
+               <div class="col-6">
+                  <button id="holdBtn" class="btn btn-warning">Verrouiller</button>
+               </div>
+               <div class="col-6">
+                  <button id="throwBtn" class="btn btn-warning">Lancer</button>
                </div>
             </div>
          </div>
       </div>
+      </div>
       <!-- PLAYER 2 -->
       <div class="col-12 col-lg-4">
          <div class="cardPlayer2 card h-100">
-            <h3 id="player2" class="card-header bg-success">Joueur 2</h3>
-            <div class="card-body row">
-               <div class="col-4">
+            <h3 id="player-1" class="card-header bg-success">Joueur 2</h3>
+            <div class="card-body row row-cols-2 row-cols-lg-1">
+               <div class="col col-lg-12">
                   <p class="card-text bg-danger">TOTAL</p>
-                  <p id="totalScore2" class="card-text">0</p>
+                  <p id="total-1" class="card-text">0</p>
                </div>
-               <div class="col-4">
+               <div class="col col-lg-12">
                   <p class="card-text bg-danger">EN POCHE</p>
-                  <p id="currentScore2" class="card-text">0</p>
+                  <p id="current-1" class="card-text">0</p>
                </div>
             </div>
          </div>
