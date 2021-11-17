@@ -66,6 +66,10 @@ function next() {
 }
 
 // Sound for rolling dice
+function rollingSound() {
+  let diceSound = new Audio("assests/songs/rollingSound.mp3");
+  diceSound.play();
+}
 
 // Sound for hold button
 function reloadSound() {
@@ -85,6 +89,7 @@ goBtn.addEventListener("click", () => {
 // Throw button
 throwBtn.addEventListener("click", () => {
   if (gamePlaying) {
+    rollingSound();
     // display dice
     imgDice.classList.remove("hidden");
     // Shake for random number
