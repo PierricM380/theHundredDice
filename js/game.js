@@ -45,7 +45,7 @@ function resetParty() {
   document.getElementById("player-0").textContent = "Joueur 1";
   document.getElementById("player-1").textContent = "Joueur 2";
 
-  imgDice.style.display = "none";
+  imgDice.classList.add("hidden");
 }
 
 // Next player function
@@ -62,7 +62,15 @@ function next() {
   document.querySelector("#current-1").textContent = 0;
   cardPlayer1.classList.toggle("visible");
   document.querySelector(".cardPlayer2").classList.toggle("visible");
-  imgDice.style.display = "none";
+  imgDice.classList.add("hidden");
+}
+
+// Sound for rolling dice
+
+// Sound for hold button
+function reloadSound() {
+  let reload = new Audio("assests/songs/RifleReload.mp3");
+  reload.play();
 }
 
 // Button new party => reset Party
@@ -78,7 +86,7 @@ goBtn.addEventListener("click", () => {
 throwBtn.addEventListener("click", () => {
   if (gamePlaying) {
     // display dice
-    imgDice.style.display = "initial";
+    imgDice.classList.remove("hidden");
     // Shake for random number
     let randomFace = Math.floor(Math.random() * 6) + 1;
     // display result face into right image
@@ -104,7 +112,8 @@ throwBtn.addEventListener("click", () => {
 // Hold button
 holdBtn.addEventListener("click", () => {
   if (gamePlaying) {
-    imgDice.style.display = "none";
+    reloadSound();
+    imgDice.classList.add("hidden");
     // Current points to total
     points[actualPlayer] += roundPoint;
 
@@ -116,14 +125,16 @@ holdBtn.addEventListener("click", () => {
         "Bien joué !";
 
       imgDice.style.display = "none";
-      document.getElementById("holdBtn").style.display = "none";
-      document.getElementById("throwBtn").style.display = "none";
-      // fireworks
+      holdBtn.style.display = "none";
+      throwBtn.style.display = "none";
+      // fireworks video
 
       // Shutdown game
       gamePlaying = false;
     } else {
-      next();
+      setTimeout(() => {
+        next();
+      }, 1000);
     }
   }
 });
