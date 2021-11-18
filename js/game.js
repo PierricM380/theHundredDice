@@ -11,7 +11,7 @@ let throwBtn = document.getElementById("throwBtn");
 // Initialize variables
 let points;
 let roundPoint;
-let actualPlayer;
+let actualCard;
 let play;
 let pseudo1 = "";
 let pseudo2 = "";
@@ -47,7 +47,7 @@ inputName2.addEventListener("input", (e) => {
 function resetParty() {
   points = [0, 0];
   roundPoint = 0;
-  actualPlayer = 0;
+  actualCard = 0;
   play = true;
   pseudo1 = "";
   pseudo2 = "";
@@ -70,10 +70,10 @@ function resetParty() {
 function next() {
   roundPoint = 0;
   // Define which player is active
-  if (actualPlayer === 0) {
-    actualPlayer = 1;
+  if (actualCard === 0) {
+    actualCard = 1;
   } else {
-    actualPlayer = 0;
+    actualCard = 0;
   }
   // Update de DOM elements
   document.getElementById("current-0").textContent = 0;
@@ -109,7 +109,7 @@ throwBtn.addEventListener("click", () => {
     // update roundPoint and display into DOM
     if (randomFace !== 1) {
       roundPoint += randomFace;
-      document.getElementById("current-" + actualPlayer).textContent =
+      document.getElementById("current-" + actualCard).textContent =
         roundPoint;
     } else {
       setTimeout(() => {
@@ -123,21 +123,21 @@ throwBtn.addEventListener("click", () => {
 holdBtn.addEventListener("click", () => {
   if (play) {
     // Current points to total
-    points[actualPlayer] += roundPoint;
+    points[actualCard] += roundPoint;
     reloadSound();
     imgDice.classList.add("hidden");
-    document.getElementById("total-" + actualPlayer).textContent =
-      points[actualPlayer];
+    document.getElementById("total-" + actualCard).textContent =
+      points[actualCard];
 
-    if (points[actualPlayer] >= 100) {
+    if (points[actualCard] >= 100) {
       // Display message of congratulation for the winner
-      document.getElementById("player-" + actualPlayer).textContent =
+      document.getElementById("player-" + actualCard).textContent =
         "Bien joué !";
       winSound();
       play = false;
       setTimeout(()=> {
         location.reload()
-      }, 8000)
+      }, 7000)
     } else {
       setTimeout(() => {
         next();
