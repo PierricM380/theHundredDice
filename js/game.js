@@ -28,6 +28,12 @@ function reloadSound() {
   reload.play();
 }
 
+// Sound for the winner
+function winSound() {
+  let winner = new Audio("assests/songs/winMedieval.mp3");
+  winner.play();
+}
+
 // collect value tipped in inputs for insert into h2, h3 title
 inputName1.addEventListener("input", (e) => {
   pseudo1 = e.target.value;
@@ -124,10 +130,14 @@ holdBtn.addEventListener("click", () => {
       points[actualPlayer];
 
     if (points[actualPlayer] >= 100) {
-      play = false;
       // Display message of congratulation for the winner
       document.getElementById("player-" + actualPlayer).textContent =
         "Bien joué !";
+      winSound();
+      play = false;
+      setTimeout(()=> {
+        location.reload()
+      }, 8000)
     } else {
       setTimeout(() => {
         next();
