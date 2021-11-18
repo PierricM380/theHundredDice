@@ -12,9 +12,21 @@ let throwBtn = document.getElementById("throwBtn");
 let points;
 let roundPoint;
 let actualPlayer;
-let gamePlaying;
+let play;
 let pseudo1 = "";
 let pseudo2 = "";
+
+// Sound for rolling dice
+function rollingSound() {
+  let diceSound = new Audio("assests/songs/rollingSound.mp3");
+  diceSound.play();
+}
+
+// Sound for hold button
+function reloadSound() {
+  let reload = new Audio("assests/songs/RifleReload.mp3");
+  reload.play();
+}
 
 // collect value tipped in inputs for insert into h2, h3 title
 inputName1.addEventListener("input", (e) => {
@@ -30,17 +42,17 @@ function resetParty() {
   points = [0, 0];
   roundPoint = 0;
   actualPlayer = 0;
-  gamePlaying = true;
+  play = true;
   pseudo1 = "";
   pseudo2 = "";
 
   cardPlayer1.classList.add("visible");
   cardPlayer2.classList.remove("visible");
 
-  document.getElementById("total-0").textContent = "0";
-  document.getElementById("current-0").textContent = "0";
-  document.getElementById("total-1").textContent = "0";
-  document.getElementById("current-1").textContent = "0";
+  document.getElementById("total-0").textContent = 0;
+  document.getElementById("current-0").textContent = 0;
+  document.getElementById("total-1").textContent = 0;
+  document.getElementById("current-1").textContent = 0;
 
   document.getElementById("player-0").textContent = "Joueur 1";
   document.getElementById("player-1").textContent = "Joueur 2";
@@ -58,23 +70,11 @@ function next() {
     actualPlayer = 0;
   }
   // Update de DOM elements
-  document.querySelector("#current-0").textContent = 0;
-  document.querySelector("#current-1").textContent = 0;
+  document.getElementById("current-0").textContent = 0;
+  document.getElementById("current-1").textContent = 0;
   cardPlayer1.classList.toggle("visible");
-  document.querySelector(".cardPlayer2").classList.toggle("visible");
+  cardPlayer2.classList.toggle("visible");
   imgDice.classList.add("hidden");
-}
-
-// Sound for rolling dice
-function rollingSound() {
-  let diceSound = new Audio("assests/songs/rollingSound.mp3");
-  diceSound.play();
-}
-
-// Sound for hold button
-function reloadSound() {
-  let reload = new Audio("assests/songs/RifleReload.mp3");
-  reload.play();
 }
 
 // Button new party => reset Party
@@ -88,7 +88,7 @@ goBtn.addEventListener("click", () => {
 
 // Throw button
 throwBtn.addEventListener("click", () => {
-  if (gamePlaying) {
+  if (play) {
     rollingSound();
     // display dice
     imgDice.classList.remove("hidden");
@@ -98,48 +98,40 @@ throwBtn.addEventListener("click", () => {
     imgDice.classList.add("animatedDice");
     imgDice.src = `/assests/images/diceFace${randomFace}.png`;
     setTimeout(() => {
-      dice.classList.remove("animatedDice");
+      imgDice.classList.remove("animatedDice");
     }, 500);
     // update roundPoint and display into DOM
     if (randomFace !== 1) {
       roundPoint += randomFace;
-
       document.getElementById("current-" + actualPlayer).textContent =
         roundPoint;
     } else {
       setTimeout(() => {
         next();
-      }, 1000);
+      }, 500);
     }
   }
 });
 
 // Hold button
 holdBtn.addEventListener("click", () => {
-  if (gamePlaying) {
-    reloadSound();
-    imgDice.classList.add("hidden");
+  if (play) {
     // Current points to total
     points[actualPlayer] += roundPoint;
-
-    document.querySelector("#total-" + actualPlayer).textContent =
+    reloadSound();
+    imgDice.classList.add("hidden");
+    document.getElementById("total-" + actualPlayer).textContent =
       points[actualPlayer];
+
     if (points[actualPlayer] >= 100) {
+      play = false;
       // Display message of congratulation for the winner
       document.getElementById("player-" + actualPlayer).textContent =
         "Bien joué !";
-
-      imgDice.style.display = "none";
-      holdBtn.style.display = "none";
-      throwBtn.style.display = "none";
-      // fireworks video
-
-      // Shutdown game
-      gamePlaying = false;
     } else {
       setTimeout(() => {
         next();
-      }, 1000);
+      }, 500);
     }
   }
 });
