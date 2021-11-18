@@ -55,6 +55,10 @@ nav {
 }
 
 /* RULES MODAL */
+h5 {
+font-weight: bold;
+}
+
 nav .modal-content {
    background-color: rgb(253, 255, 240);
 }
