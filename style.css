@@ -15,7 +15,7 @@ Body {
 
 /* HEADER */
 header {
-   height: 50px;
+   height: 75px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -50,7 +50,7 @@ nav {
    justify-content: center;
    align-items: center;
    text-align: center;
-   height: 75px;
+   height: 100px;
    font-size: 1rem;
 }
 
@@ -173,7 +173,7 @@ main .card-body p:nth-child(3) {
 /* FOOTER */
 footer {
    position: relative;
-   top: 50px;
+   top: 100px;
    height: 25px;
    display: flex;
    justify-content: center;
