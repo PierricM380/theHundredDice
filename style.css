@@ -15,7 +15,7 @@ Body {
 
 /* HEADER */
 header {
-   height: 75px;
+   height: 50px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -74,12 +74,12 @@ main {
 .cardPlayer2 {
    text-align: center;
    background-color: rgb(253, 255, 240);
+   transition: 0.7s ease-in-out;
    opacity: 0.1;
 }
 
 .visible {
    box-shadow: 0 0px 20px rgb(128, 128, 128);
-   transition: 0.5s ease;
    opacity: 1;
 }
 
@@ -115,6 +115,7 @@ main .card-body p:nth-child(3) {
    font-weight: bold;
 }
 
+/* DICE */
 #dice {
    width: 75px;
    height: auto;
@@ -124,7 +125,6 @@ main .card-body p:nth-child(3) {
    visibility: hidden;
 }
 
-/* DICE */
 .animatedDice {
    animation: shake 0.5s infinite;
 }
@@ -175,13 +175,12 @@ footer {
 
    h1 {
       font-size: 3rem;
-      text-shadow: none;
       margin-left: 150px;
    }
 
    /* NAVBAR */
    nav {
-      height: 100px;
+      height: 150px;
       font-size: 1.2rem;
    }
 
@@ -219,6 +218,6 @@ footer {
    /* FOOTER */
    footer {
       top: 75px;
-      height: 100px;
+      height: 75px;
    }
 }
