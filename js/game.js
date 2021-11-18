@@ -16,24 +16,6 @@ let play;
 let pseudo1 = "";
 let pseudo2 = "";
 
-// Sound for rolling dice
-function rollingSound() {
-  let diceSound = new Audio("assests/songs/rollingSound.mp3");
-  diceSound.play();
-}
-
-// Sound for hold button
-function reloadSound() {
-  let reload = new Audio("assests/songs/RifleReload.mp3");
-  reload.play();
-}
-
-// Sound for the winner
-function winSound() {
-  let winner = new Audio("assests/songs/winMedieval.mp3");
-  winner.play();
-}
-
 // collect value tipped in inputs for insert into h2, h3 title
 inputName1.addEventListener("input", (e) => {
   pseudo1 = e.target.value;
@@ -119,6 +101,12 @@ throwBtn.addEventListener("click", () => {
   }
 });
 
+// Sound for rolling dice
+function rollingSound() {
+  let diceSound = new Audio("assests/songs/rollingSound.mp3");
+  diceSound.play();
+}
+
 // Hold button
 holdBtn.addEventListener("click", () => {
   if (play) {
@@ -145,3 +133,15 @@ holdBtn.addEventListener("click", () => {
     }
   }
 });
+
+// Sound for hold button
+function reloadSound() {
+  let reload = new Audio("assests/songs/RifleReload.mp3");
+  reload.play();
+}
+
+// Sound for the winner
+function winSound() {
+  let winner = new Audio("assests/songs/winMedieval.mp3");
+  winner.play();
+}
