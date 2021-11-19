@@ -96,16 +96,13 @@ goBtn.addEventListener("click", () => {
 throwBtn.addEventListener("click", () => {
   if (play) {
     rollingSound();
-    // display dice
-    imgDice.classList.remove("hidden");
-    // display result face into right image
-    imgDice.classList.add("animatedDice");
     // Shake for random number
     let randomFace = Math.floor(Math.random() * 6) + 1;
     imgDice.src = `/assests/images/diceFace${randomFace}.png`;
-    setTimeout(() => {
-      imgDice.classList.remove("animatedDice");
-    }, 1000);
+
+    // display dice
+    imgDice.classList.remove("hidden");
+
     // update roundPoint and display into DOM
     if (randomFace !== 1) {
       roundPoint += randomFace;
@@ -113,7 +110,7 @@ throwBtn.addEventListener("click", () => {
     } else {
       setTimeout(() => {
         next();
-      }, 1500);
+      }, 1200);
     }
   }
 });
@@ -140,7 +137,7 @@ holdBtn.addEventListener("click", () => {
     } else {
       setTimeout(() => {
         next();
-      }, 1500);
+      }, 1200);
     }
   }
 });
