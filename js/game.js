@@ -37,15 +37,33 @@ function resetParty() {
   cardPlayer1.classList.add("visible");
   cardPlayer2.classList.remove("visible");
 
-  document.getElementById("total-0").textContent = 0;
-  document.getElementById("current-0").textContent = 0;
-  document.getElementById("total-1").textContent = 0;
-  document.getElementById("current-1").textContent = 0;
+  document.getElementById("total-0").textContent = "0";
+  document.getElementById("current-0").textContent = "0";
+  document.getElementById("total-1").textContent = "0";
+  document.getElementById("current-1").textContent = "0";
 
   document.getElementById("player-0").textContent = "Joueur 1";
   document.getElementById("player-1").textContent = "Joueur 2";
 
   imgDice.classList.add("hidden");
+}
+
+// Sound for rolling dice
+function rollingSound() {
+  let diceSound = new Audio("assests/songs/dice.mp3");
+  diceSound.play();
+}
+
+// Sound for hold button
+function reloadSound() {
+  let reload = new Audio("assests/songs/RifleReload.mp3");
+  reload.play();
+}
+
+// Sound for the winner
+function winSound() {
+  let winner = new Audio("assests/songs/winMedieval.mp3");
+  winner.play();
 }
 
 // Next player function
@@ -80,68 +98,49 @@ throwBtn.addEventListener("click", () => {
     rollingSound();
     // display dice
     imgDice.classList.remove("hidden");
-    // Shake for random number
-    let randomFace = Math.floor(Math.random() * 6) + 1;
     // display result face into right image
     imgDice.classList.add("animatedDice");
+    // Shake for random number
+    let randomFace = Math.floor(Math.random() * 6) + 1;
     imgDice.src = `/assests/images/diceFace${randomFace}.png`;
     setTimeout(() => {
       imgDice.classList.remove("animatedDice");
-    }, 500);
+    }, 1000);
     // update roundPoint and display into DOM
     if (randomFace !== 1) {
       roundPoint += randomFace;
-      document.getElementById("current-" + actualCard).textContent =
-        roundPoint;
+      document.getElementById("current-" + actualCard).textContent = roundPoint;
     } else {
       setTimeout(() => {
         next();
-      }, 500);
+      }, 1500);
     }
   }
 });
-
-// Sound for rolling dice
-function rollingSound() {
-  let diceSound = new Audio("assests/songs/rollingSound.mp3");
-  diceSound.play();
-}
 
 // Hold button
 holdBtn.addEventListener("click", () => {
   if (play) {
     // Current points to total
     points[actualCard] += roundPoint;
-    reloadSound();
-    imgDice.classList.add("hidden");
     document.getElementById("total-" + actualCard).textContent =
       points[actualCard];
+    reloadSound();
+    imgDice.classList.add("hidden");
 
     if (points[actualCard] >= 100) {
+      winSound();
       // Display message of congratulation for the winner
       document.getElementById("player-" + actualCard).textContent =
         "Bien joué !";
-      winSound();
       play = false;
-      setTimeout(()=> {
-        location.reload()
-      }, 7000)
+      setTimeout(() => {
+        location.reload();
+      }, 6000);
     } else {
       setTimeout(() => {
         next();
-      }, 500);
+      }, 1500);
     }
   }
 });
-
-// Sound for hold button
-function reloadSound() {
-  let reload = new Audio("assests/songs/RifleReload.mp3");
-  reload.play();
-}
-
-// Sound for the winner
-function winSound() {
-  let winner = new Audio("assests/songs/winMedieval.mp3");
-  winner.play();
-}
