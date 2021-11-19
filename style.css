@@ -173,7 +173,7 @@ main .card-body p:nth-child(3) {
 /* FOOTER */
 footer {
    position: relative;
-   top: 100px;
+   top: 60px;
    height: 25px;
    display: flex;
    justify-content: center;
