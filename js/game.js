@@ -1,4 +1,4 @@
-// Get DOM elements
+// Store DOM elements
 let newGame = document.getElementById("newGame");
 let inputName1 = document.getElementById("inputName1");
 let inputName2 = document.getElementById("inputName2");
@@ -15,7 +15,6 @@ let actualCard;
 let play;
 let pseudo1 = "";
 let pseudo2 = "";
-
 // collect value tipped in inputs for insert into h2, h3 title
 inputName1.addEventListener("input", (e) => {
   pseudo1 = e.target.value;
@@ -24,6 +23,25 @@ inputName1.addEventListener("input", (e) => {
 inputName2.addEventListener("input", (e) => {
   pseudo2 = e.target.value;
 });
+/** FUNCTION CREATION */
+
+// Sound for rolling dice
+function rollingSound() {
+  let diceSound = new Audio("assests/songs/dice.mp3");
+  diceSound.play();
+}
+
+// Sound for hold button
+function reloadSound() {
+  let reload = new Audio("assests/songs/RifleReload.mp3");
+  reload.play();
+}
+
+// Sound for the winner
+function winSound() {
+  let winner = new Audio("assests/songs/winMedieval.mp3");
+  winner.play();
+}
 
 // reseting all requiered variables and DOM elements for a new party
 function resetParty() {
@@ -48,27 +66,8 @@ function resetParty() {
   imgDice.classList.add("hidden");
 }
 
-// Sound for rolling dice
-function rollingSound() {
-  let diceSound = new Audio("assests/songs/dice.mp3");
-  diceSound.play();
-}
-
-// Sound for hold button
-function reloadSound() {
-  let reload = new Audio("assests/songs/RifleReload.mp3");
-  reload.play();
-}
-
-// Sound for the winner
-function winSound() {
-  let winner = new Audio("assests/songs/winMedieval.mp3");
-  winner.play();
-}
-
 // Next player function
 function next() {
-  roundPoint = 0;
   // Define which player is active
   if (actualCard === 0) {
     actualCard = 1;
@@ -76,17 +75,17 @@ function next() {
     actualCard = 0;
   }
   // Update de DOM elements
-  document.getElementById("current-0").textContent = 0;
-  document.getElementById("current-1").textContent = 0;
   cardPlayer1.classList.toggle("visible");
   cardPlayer2.classList.toggle("visible");
   imgDice.classList.add("hidden");
 }
 
+/** LOGIC GAME */
+
 // Button new party => reset Party
 newGame.addEventListener("click", resetParty);
 
-// Button Go => Add names into cards names titles
+// Button Go => Add names into cards titles
 goBtn.addEventListener("click", () => {
   document.getElementById("player-0").textContent = pseudo1;
   document.getElementById("player-1").textContent = pseudo2;
@@ -96,7 +95,7 @@ goBtn.addEventListener("click", () => {
 throwBtn.addEventListener("click", () => {
   if (play) {
     rollingSound();
-    // Shake for random number
+    // Shake for random number and insert the right face
     let randomFace = Math.floor(Math.random() * 6) + 1;
     imgDice.src = `/assests/images/diceFace${randomFace}.png`;
 
@@ -108,6 +107,9 @@ throwBtn.addEventListener("click", () => {
       roundPoint += randomFace;
       document.getElementById("current-" + actualCard).textContent = roundPoint;
     } else {
+      roundPoint = 0;
+      document.getElementById("current-0").textContent = 0;
+      document.getElementById("current-1").textContent = 0;
       setTimeout(() => {
         next();
       }, 1200);
@@ -118,11 +120,11 @@ throwBtn.addEventListener("click", () => {
 // Hold button
 holdBtn.addEventListener("click", () => {
   if (play) {
-    // Current points to total
+    reloadSound();
+    // Current points to total and display it
     points[actualCard] += roundPoint;
     document.getElementById("total-" + actualCard).textContent =
       points[actualCard];
-    reloadSound();
     imgDice.classList.add("hidden");
 
     if (points[actualCard] >= 100) {
@@ -130,11 +132,15 @@ holdBtn.addEventListener("click", () => {
       // Display message of congratulation for the winner
       document.getElementById("player-" + actualCard).textContent =
         "Bien joué !";
+        // Stop game
       play = false;
       setTimeout(() => {
         location.reload();
       }, 6000);
     } else {
+      roundPoint = 0;
+      document.getElementById("current-0").textContent = 0;
+      document.getElementById("current-1").textContent = 0;
       setTimeout(() => {
         next();
       }, 1200);
