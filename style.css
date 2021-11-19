@@ -95,12 +95,13 @@ main {
 .cardPlayer2 {
    text-align: center;
    background-color: rgb(253, 255, 240);
-   transition: 0.5s ease-in-out;
+   transition: 1s ease-in-out;
    opacity: 0.1;
 }
 
 .visible {
    box-shadow: 0 0px 20px rgb(128, 128, 128);
+   transition: 1s ease-in-out;
    opacity: 1;
 }
 
@@ -144,24 +145,6 @@ main .card-body p:nth-child(3) {
 
 .hidden {
    visibility: hidden;
-}
-
-.animatedDice {
-   animation: shake 0.5s infinite;
-}
-
-@keyframes shake {
-   0% {
-      transform: rotateX(45deg);
-   }
-
-   50% {
-      transform: rotateY(90deg);
-   }
-
-   100% {
-      transform: rotateX(180deg);
-   }
 }
 
 #holdBtn,
