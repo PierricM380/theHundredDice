@@ -27,7 +27,7 @@ inputName2.addEventListener("input", (e) => {
 
 // Sound for rolling dice
 function rollingSound() {
-  let diceSound = new Audio("assests/songs/dice.mp3");
+  let diceSound = new Audio("assests/songs/dice.wav");
   diceSound.play();
 }
 
@@ -98,7 +98,6 @@ throwBtn.addEventListener("click", () => {
     // Shake for random number and insert the right face
     let randomFace = Math.floor(Math.random() * 6) + 1;
     imgDice.src = `/assests/images/diceFace${randomFace}.png`;
-
     // display dice
     imgDice.classList.remove("hidden");
 
@@ -132,7 +131,7 @@ holdBtn.addEventListener("click", () => {
       // Display message of congratulation for the winner
       document.getElementById("player-" + actualCard).textContent =
         "Bien joué !";
-        // Stop game
+      // Stop game
       play = false;
       setTimeout(() => {
         location.reload();
