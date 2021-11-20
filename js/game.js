@@ -93,14 +93,13 @@ goBtn.addEventListener("click", () => {
 
 // Throw button
 throwBtn.addEventListener("click", () => {
+  rollingSound();
   if (play) {
-    rollingSound();
     // Shake for random number and insert the right face
     let randomFace = Math.floor(Math.random() * 6) + 1;
     imgDice.src = `/assests/images/diceFace${randomFace}.png`;
     // display dice
     imgDice.classList.remove("hidden");
-
     // update roundPoint and display into DOM
     if (randomFace !== 1) {
       roundPoint += randomFace;
@@ -118,14 +117,14 @@ throwBtn.addEventListener("click", () => {
 
 // Hold button
 holdBtn.addEventListener("click", () => {
+  reloadSound();
   if (play) {
-    reloadSound();
     // Current points to total and display it
     points[actualCard] += roundPoint;
     document.getElementById("total-" + actualCard).textContent =
       points[actualCard];
     imgDice.classList.add("hidden");
-
+    // Shake if total >= 100
     if (points[actualCard] >= 100) {
       winSound();
       // Display message of congratulation for the winner
