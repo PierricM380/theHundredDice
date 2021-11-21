@@ -100,6 +100,10 @@ throwBtn.addEventListener("click", () => {
     imgDice.src = `/assests/images/diceFace${randomFace}.png`;
     // display dice
     imgDice.classList.remove("hidden");
+    imgDice.classList.add("animatedDice");
+    setTimeout(() => {
+      dice.classList.remove("animatedDice");
+    }, 600);
     // update roundPoint and display into DOM
     if (randomFace !== 1) {
       roundPoint += randomFace;
@@ -110,7 +114,7 @@ throwBtn.addEventListener("click", () => {
       document.getElementById("current-1").textContent = 0;
       setTimeout(() => {
         next();
-      }, 1200);
+      }, 1000);
     }
   }
 });
