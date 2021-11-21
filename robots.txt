@@ -19,3 +19,5 @@ Disallow:
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
+
+sitemap: https://the-hundred-dice-game.netlify.app/sitemap.xml
