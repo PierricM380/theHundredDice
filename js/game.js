@@ -15,7 +15,7 @@ let actualCard;
 let play;
 let pseudo1 = "";
 let pseudo2 = "";
-// collect value tipped in inputs for insert into h2, h3 title
+// collect value tipped in inputs for insert into h2, h3 titles (players names)
 inputName1.addEventListener("input", (e) => {
   pseudo1 = e.target.value;
 });
@@ -23,6 +23,7 @@ inputName1.addEventListener("input", (e) => {
 inputName2.addEventListener("input", (e) => {
   pseudo2 = e.target.value;
 });
+
 /** FUNCTION CREATION */
 
 // Sound for rolling dice
