@@ -96,10 +96,8 @@ main {
    text-align: center;
    background-color: rgb(253, 255, 240);
    transition: 0.5s ease-out;
-   opacity: 0.1;
+   opacity: 0.5;
 }
-
-
 
 .visible {
    box-shadow: 0 0px 20px rgb(128, 128, 128);
@@ -197,7 +195,7 @@ footer {
       background-image: url("assests/images/headerdice.jpg");
       background-size: 100% 100%;
       background-repeat: no-repeat;
-      height: 500px;
+      height: 700px;
       box-shadow: 0 5px 10px rgb(128, 128, 128);
       text-align: left;
    }
